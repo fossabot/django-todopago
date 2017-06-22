@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-21 22:26-0300\n"
+"PO-Revision-Date: 2017-06-21 22:35-0300\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 2.0.1\n"
+
+msgid "name"
+msgstr "nombre"
+
+msgid "A friendly name to recognize this account."
+msgstr "Un nombre amigable para reconocer esta cuenta."
+
+msgid "merchant id"
+msgstr "merchant id"
+
+msgid "The merchant ID given by TodoPago."
+msgstr "El merchant ID dado por TodoPago."
+
+msgid "api key"
+msgstr "api key"
+
+msgid "The API key given by TodoPago."
+msgstr "La API key dada por TodoPago."
+
+msgid "sandbox"
+msgstr "sanbox"
+
+msgid ""
+"Indicates if this account uses the sandbox mode, intended for testing rather "
+"than real transactions."
+msgstr ""
+"Indica si esta cuenta usa el modo sandbox, destinado a pruebas en vez de "
+"transacciones reales."
+
+msgid "city"
+msgstr "cuidad"
+
+msgid "The city where invoices are  emitted"
+msgstr "La ciudad donde se emiten las facturas."
+
+msgid "country"
+msgstr "pais"
+
+msgid "The country code where invoices are  emitted"
+msgstr "El pais donde se emiten las facturas."
+
+msgid "post code"
+msgstr "código postal"
+
+msgid "The post code where invoices are  emitted"
+msgstr "El código postal donde se emiten las facturas."
+
+msgid "province"
+msgstr "provincia"
+
+msgid "The province where invoices are emitted"
+msgstr "La provincia donde se emiten las facturas."
+
+msgid "address"
+msgstr "domicilio"
+
+msgid "The address where invoices emitted"
+msgstr "El domicilio donde se emiten las facturas."
+
+msgid "merchant"
+msgstr "mercado"
+
+msgid "payment date"
+msgstr "fecha de pago"
