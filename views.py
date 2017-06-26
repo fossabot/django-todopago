@@ -14,10 +14,7 @@ class PostPaymentView(View):
         operation = models.Operation.objects.get(operation_id=operation_id)
         operation.process_answer(answer_key)
 
-        return redirect(
-            settings.TODOPAGO_POST_PAYMENT_VIEW,
-            args=(operation.pk,),
-        )
+        return redirect(settings.TODOPAGO_POST_PAYMENT_VIEW, operation.pk)
 
     @method_decorator(csrf_exempt)
     def dispatch(self, *args, **kwargs):
