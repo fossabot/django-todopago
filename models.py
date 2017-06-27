@@ -162,10 +162,6 @@ class Operation(models.Model):
     objects = OperationManager()
 
     def process_answer(self, answer_key):
-        payment, _created = OperationPayment.objects.get_or_create(
-            operation=self,
-            answer_key=answer_key,
-        )
 
         response = self.merchant.client.getAuthorizeAnswer({
             'Security': self.merchant.api_key,
@@ -175,13 +171,26 @@ class Operation(models.Model):
         })
 
         if response.StatusCode == -1:
-            payment.payment_date = response.Payload.Answer.DATETIME
-            payment.save()
-        else:
-            logger.info('Generated TodoPago operation: %s', response)
-            logger.error(
-                'Got an answer for a rejected payment: %s', response
+            OperationPayment.objects.get_or_create(
+                operation=self,
+                defaults={
+                    'answer_key': answer_key,
+                    'payment_date': response.Payload.Answer.DATETIME,
+                },
             )
+        else:
+            OperationFailure.objects.get_or_create(
+                operation=self,
+                defaults={
+                    'code': response.StatusCode,
+                    'message': response.StatusMessage,
+                    'failure_date': response.Payload.Answer.DATETIME,
+                }
+            )
+
+
+# XXX TODO: Payment and Failure should both subclass the same common one, so
+# only one can exist ("result")
 
 
 class OperationPayment(models.Model):
@@ -196,6 +205,26 @@ class OperationPayment(models.Model):
         max_length=40,
     )
     payment_date = models.DateTimeField(
+        _('payment date'),
+        null=True,
+    )
+
+
+class OperationFailure(models.Model):
+    operation = models.OneToOneField(
+        Operation,
+        verbose_name=_('merchant'),
+        related_name='failure',
+        on_delete=models.PROTECT,
+    )
+    code = models.PositiveIntegerField(
+        _('code'),
+    )
+    message = models.CharField(
+        'message',
+        max_length=256,
+    )
+    failure_date = models.DateTimeField(
         _('payment date'),
         null=True,
     )
