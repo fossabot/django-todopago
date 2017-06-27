@@ -119,7 +119,8 @@ class OperationManager(models.Manager):
             operation_data,
         )
 
-        logger.info('Generated TodoPago operation: %s', response)
+        logger.info('Createing Todopago operation: %s', operation_data)
+        logger.info('TodoPago responded: %s', response)
         if response.StatusCode != -1:
             raise Exception(response.StatusMessage)
 
