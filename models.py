@@ -181,6 +181,7 @@ class Operation(models.Model):
             OperationFailure.objects.get_or_create(
                 operation=self,
                 defaults={
+                    'answer_key': answer_key,
                     'code': response.StatusCode,
                     'message': response.StatusMessage,
                     'failure_date': response.Payload.Answer.DATETIME,
@@ -214,6 +215,10 @@ class OperationFailure(models.Model):
         verbose_name=_('merchant'),
         related_name='failure',
         on_delete=models.PROTECT,
+    )
+    answer_key = models.CharField(
+        'answer_key',
+        max_length=40,
     )
     code = models.PositiveIntegerField(
         _('code'),
