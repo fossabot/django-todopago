@@ -205,7 +205,6 @@ class OperationPayment(models.Model):
     )
     payment_date = models.DateTimeField(
         _('payment date'),
-        null=True,
     )
 
 
