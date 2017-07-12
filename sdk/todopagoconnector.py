@@ -234,7 +234,6 @@ class TodoPagoConnector:
 		
 		xmlpayload = "<Request>"
 		for key in diccionario:
-			print(key)
 			xmlpayload += "<"+key+">"+diccionario[key]+"</"+key+">"
 		xmlpayload += "</Request>"
 
@@ -265,7 +264,6 @@ class TodoPagoConnector:
 		sorted_params = self._sort_rest_params(params, keys_order)
 		url = self._end_point_rest + service + self._parse_rest_params(sorted_params)
 
-		#print(self._http_header)
 		headers_aux = copy.deepcopy(self._http_header)
 		headers_aux['Accept'] = 'application/json'
 
