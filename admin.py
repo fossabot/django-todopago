@@ -9,3 +9,8 @@ class MerchantAdmin(admin.ModelAdmin):
         'name',
         'merchant_id'
     )
+
+
+@admin.register(models.Operation)
+class OperationAdmin(admin.ModelAdmin):
+    pass
