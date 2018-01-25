@@ -61,6 +61,10 @@ class TodoPagoConnector:
     def getAuthorize(self, optionsAnwser):
         return dict(self._getAuthorizeAnswer(optionsAnwser))
 
+    def getAuthorizeAnswer(self, optionsAnwser):
+        # XXX: Deprecated
+        return self._getAuthorizeAnswer(optionsAnwser)
+
     # Methodo publico que llama a la devolucion
     def returnRequest(self, optionsReturn):
         self._getClientSoap('Authorize')

@@ -162,7 +162,7 @@ class Operation(models.Model):
 
     def process_answer(self, answer_key):
 
-        response = self.merchant.client.getAuthorize({
+        response = self.merchant.client.getAuthorizeAnswer({
             'Security': self.merchant.api_key,
             'Merchant': str(self.merchant.merchant_id),
             'RequestKey': self.request_key,
