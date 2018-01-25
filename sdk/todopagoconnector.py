@@ -61,10 +61,6 @@ class TodoPagoConnector:
     def getAuthorize(self, optionsAnwser):
         return dict(self._getAuthorizeAnswer(optionsAnwser))
 
-    def getAuthorizeAnswer(self, optionsAnwser):
-        # XXX: Deprecated
-        return self._getAuthorizeAnswer(optionsAnwser)
-
     # Methodo publico que llama a la devolucion
     def returnRequest(self, optionsReturn):
         self._getClientSoap('Authorize')
@@ -182,8 +178,8 @@ class TodoPagoConnector:
 
     def _client_soap_header(self, data):
         retorno = "{"
-        for key in data:
-            retorno += key+" : '"+data[key]+"', "
+        for key, value in data.items():
+            retorno += f"{key} : '{value}', "
         retorno += "}, "
 
         return retorno
@@ -200,8 +196,8 @@ class TodoPagoConnector:
                 diccionario["LENGUAGEVERSION"] = "version unknown"
 
         xmlpayload = "<Request>"
-        for key in diccionario:
-            xmlpayload += "<"+key+">"+diccionario[key]+"</"+key+">"
+        for key, value in diccionario.items():
+            xmlpayload += f'<{key}>{value}</{key}>'
         xmlpayload += "</Request>"
 
         return xmlpayload
@@ -216,12 +212,8 @@ class TodoPagoConnector:
     def _parse_rest_params(self, params):
         url = ''
         for param in params:
-            url += (
-                "/" +
-                param[0] +
-                "/" +
-                param[1]  # param[0] tendra la key y param [1] el value
-            )
+            # param[0] tendra la key y param [1] el value
+            url += "/" + param[0] + "/" + param[1]
 
         return url
 
