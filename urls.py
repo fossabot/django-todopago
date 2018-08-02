@@ -9,3 +9,5 @@ urlpatterns = [
         name='post_payment',
     ),
 ]
+
+app_name = 'todopago'
