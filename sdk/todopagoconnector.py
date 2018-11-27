@@ -193,10 +193,10 @@ class TodoPagoConnector:
         diccionario["SDKVERSION"] = ver
         try:
             diccionario["LENGUAGEVERSION"] = sys.version
-        except Exception as err:
+        except Exception:
             try:
                 diccionario["LENGUAGEVERSION"] = sys.version()
-            except Exception as err2:
+            except Exception:
                 diccionario["LENGUAGEVERSION"] = "version unknown"
 
         xmlpayload = "<Request>"
