@@ -37,27 +37,36 @@ class Merchant(models.Model):
     city = models.CharField(
         _('city'),
         max_length=50,
-        help_text=_('The city where invoices are emitted'),
+        help_text=_('The city where invoices are emitted.'),
     )
     country = models.CharField(
         _('country'),
         max_length=2,
-        help_text=_('The country code where invoices are emitted'),
+        help_text=_(
+            'The country code where invoices are emitted.'
+            'ISO 3166 codes should be used here.'
+        ),
     )
     post_code = models.CharField(
         _('post code'),
         max_length=10,
-        help_text=_('The post code where invoices are  emitted'),
+        help_text=_(
+            'The post code where invoices are emitted. '
+            'Old-style (four digit) post codes are expected.'
+        ),
     )
     province = models.CharField(
         _('province'),
-        max_length=2,
-        help_text=_('The province where invoices are emitted'),
+        max_length=1,
+        help_text=_(
+            'The province where invoices are emitted. '
+            'ISO 3166-2:AR codes should be used here.'
+        ),
     )
     address = models.CharField(
         _('address'),
         max_length=60,
-        help_text=_('The address where invoices emitted'),
+        help_text=_('The address where invoices emitted.'),
     )
 
     @property
