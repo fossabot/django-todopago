@@ -37,12 +37,12 @@ class Merchant(models.Model):
     city = models.CharField(
         _('city'),
         max_length=50,
-        help_text=_('The city where invoices are  emitted'),
+        help_text=_('The city where invoices are emitted'),
     )
     country = models.CharField(
         _('country'),
         max_length=2,
-        help_text=_('The country code where invoices are  emitted'),
+        help_text=_('The country code where invoices are emitted'),
     )
     post_code = models.CharField(
         _('post code'),
