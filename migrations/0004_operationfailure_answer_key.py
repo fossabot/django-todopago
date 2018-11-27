@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('django_todopago', '0003_operationpayment_payment_notnull'),
+        ('todopago', '0003_operationpayment_payment_notnull'),
     ]
 
     operations = [

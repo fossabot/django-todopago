@@ -9,7 +9,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('django_todopago', '0001_initial'),
+        ('todopago', '0001_initial'),
     ]
 
     operations = [
@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('code', models.PositiveIntegerField(verbose_name='code')),
                 ('message', models.CharField(max_length=256, verbose_name='message')),
                 ('failure_date', models.DateTimeField(null=True, verbose_name='payment date')),
-                ('operation', models.OneToOneField(on_delete=django.db.models.deletion.PROTECT, related_name='failure', to='django_todopago.Operation', verbose_name='merchant')),
+                ('operation', models.OneToOneField(on_delete=django.db.models.deletion.PROTECT, related_name='failure', to='todopago.Operation', verbose_name='merchant')),
             ],
         ),
     ]

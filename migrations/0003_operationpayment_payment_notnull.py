@@ -8,7 +8,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('django_todopago', '0002_operationfailure'),
+        ('todopago', '0002_operationfailure'),
     ]
 
     operations = [

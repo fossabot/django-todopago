@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('payment_url', models.URLField(verbose_name='payment url')),
                 ('request_key', models.CharField(max_length=48, verbose_name='request key')),
                 ('public_request_key', models.CharField(max_length=48, verbose_name='public request key')),
-                ('merchant', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='operations', to='django_todopago.Merchant', verbose_name='merchant')),
+                ('merchant', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='operations', to='todopago.Merchant', verbose_name='merchant')),
             ],
         ),
         migrations.CreateModel(
@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('answer_key', models.CharField(max_length=40, verbose_name='answer_key')),
                 ('payment_date', models.DateTimeField(null=True, verbose_name='payment date')),
-                ('operation', models.OneToOneField(on_delete=django.db.models.deletion.PROTECT, related_name='payment', to='django_todopago.Operation', verbose_name='merchant')),
+                ('operation', models.OneToOneField(on_delete=django.db.models.deletion.PROTECT, related_name='payment', to='todopago.Operation', verbose_name='merchant')),
             ],
         ),
     ]
