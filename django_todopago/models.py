@@ -11,7 +11,8 @@ logger = logging.getLogger(__name__)
 
 
 class Merchant(models.Model):
-    """A todopago merchant account"""
+    """A todopago merchant account."""
+
     name = models.CharField(
         _('name'),
         max_length=32,
@@ -82,9 +83,17 @@ class Merchant(models.Model):
             self.environment_name,
         )
 
+    def __repr__(self):
+        return _('<Merchant %(id)s: %(name)s>') % {
+            'id': self.pk or 'unsaved',
+            'name': self.name,
+        }
+
+    def __str__(self):
+        return self.name
+
 
 class OperationManager(models.Manager):
-
     def create_upstream(
         self,
         merchant,
@@ -170,7 +179,6 @@ class Operation(models.Model):
     objects = OperationManager()
 
     def process_answer(self, answer_key):
-
         response = self.merchant.client.getAuthorizeAnswer({
             'Security': self.merchant.api_key,
             'Merchant': str(self.merchant.merchant_id),
@@ -197,6 +205,15 @@ class Operation(models.Model):
                 }
             )
 
+    def __repr__(self):
+        return _('<Operation %(id)s: external id %(operation_id)s>') % {
+            'id': self.pk or 'unsaved',
+            'operation_id': self.operation_id,
+        }
+
+    def __str__(self):
+        return _('Operation %d') % self.pk
+
 
 # XXX TODO: Payment and Failure should both subclass the same common one, so
 # only one can exist ("result")
@@ -210,12 +227,21 @@ class OperationPayment(models.Model):
         on_delete=models.PROTECT,
     )
     answer_key = models.CharField(
-        'answer_key',
+        _('answer key'),
         max_length=40,
     )
     payment_date = models.DateTimeField(
         _('payment date'),
     )
+
+    def __repr__(self):
+        return _('<OperationPayment %(id)s: for op %(operation_id)s>') % {
+            'id': self.pk or 'unsaved',
+            'operation_id': self.operation_id,
+        }
+
+    def __str__(self):
+        return _('Payment %d') % self.pk
 
 
 class OperationFailure(models.Model):
@@ -240,3 +266,12 @@ class OperationFailure(models.Model):
         _('payment date'),
         null=True,
     )
+
+    def __repr__(self):
+        return _('<OperationFailure %(id)s: for op %(operation_id)s>') % {
+            'id': self.pk or 'unsaved',
+            'operation_id': self.operation_id,
+        }
+
+    def __str__(self):
+        return _('Payment failure %d') % self.pk
