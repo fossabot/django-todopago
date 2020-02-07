@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FWhyNotHugo%2Fdjango-todopago.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FWhyNotHugo%2Fdjango-todopago?ref=badge_shield)
+
 django-todopago
 ===============
 
@@ -9,3 +11,7 @@ as expected.
 
 There's little docs, and lot's of guesswork to using it. Docs and more README
 is welcome.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FWhyNotHugo%2Fdjango-todopago.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FWhyNotHugo%2Fdjango-todopago?ref=badge_large)
